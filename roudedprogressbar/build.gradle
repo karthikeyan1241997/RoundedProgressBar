@@ -1,6 +1,31 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+    bintrayRepo = "RoundedProgressBar"
+    bintrayName = "com.karthi.roundedprogressbar"
+
+    libraryName = 'roundedprogressbar'
+
+    publishedGroupId = 'com.karthi.roundedprogressbar'
+    artifact = 'roundedprogressbar'
+    libraryVersion = '1.0.0'
+
+    libraryDescription = 'Rounded Progress Bar'
+    siteUrl = 'https://github.com/karthikeyan1241997/RoundedProgressBar'
+    gitUrl = 'https://github.com/karthikeyan1241997/RoundedProgressBar.git'
+    developerId = 'karthi'
+    developerName = 'Karthikeyan S'
+    developerEmail = 'karthikeyan1241997@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -33,4 +58,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+if(project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
